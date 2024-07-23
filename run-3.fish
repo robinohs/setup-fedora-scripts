@@ -88,5 +88,11 @@ fish_add_path /usr/bin/obsidian
 sudo dnf -y install syncthing
 systemctl --user enable --now syncthing.service
 
+# install xclip
+sudo dnf -y install xclip
+
+# install eza
+sudo dnf -y install eza
+
 # copy fish config
 cp config.fish /home/robin/.config/fish/config.fish
