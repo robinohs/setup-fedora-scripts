@@ -8,5 +8,7 @@ starship init fish | source
 clear
 
 alias cd="z"
-alias ssh-key="bat ~/.ssh/id_ed25519.pub"
-
+alias cdi="zi"
+alias cat="bat"
+alias c="xclip -selection clipboard"
+alias ssh-key="bat ~/.ssh/id_ed25519.pub "
