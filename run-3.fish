@@ -28,7 +28,7 @@ sudo dnf install thunderbird -y
 
 # install VSCODE
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo >/dev/null
 sudo dnf check-update
 sudo dnf install code -y
 
@@ -81,7 +81,7 @@ Type=Application
 Version=$OBSIDIAN_VERSION
 Categories=Office;Utility;
 MimeType=x-scheme-handler/obsidian;text/html;
-" > /home/robin/.local/share/applications/obsidian.desktop
+" >/home/robin/.local/share/applications/obsidian.desktop
 fish_add_path /usr/bin/obsidian
 
 # install syncthing
@@ -96,3 +96,13 @@ sudo dnf -y install eza
 
 # copy fish config
 cp config.fish /home/robin/.config/fish/config.fish
+
+# install flathub/flatpak
+sudo dnf install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# install spotify
+flatpak install flathub com.spotify.Client
+
+# install telegram
+flatpak install flathub org.telegram.desktop
