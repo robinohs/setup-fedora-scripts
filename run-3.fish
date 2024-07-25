@@ -63,27 +63,6 @@ sudo dnf -y copr enable goncalossilva/act
 sudo dnf -y install act-cli
 sudo docker pull catthehacker/ubuntu:full-latest
 
-# install obsidian
-set OBSIDIAN_VERSION 1.6.5
-sudo rm -f /tmp/Obsidian-$OBSIDIAN_VERSION.AppImage
-wget -P /tmp https://github.com/obsidianmd/obsidian-releases/releases/download/v$OBSIDIAN_VERSION/Obsidian-$OBSIDIAN_VERSION.AppImage
-sudo chmod +x /tmp/Obsidian-$OBSIDIAN_VERSION.AppImage
-sudo mkdir -p /usr/bin/obsidian
-sudo wget -P /usr/bin/obsidian https://obsidian.md/images/obsidian-logo-gradient.svg
-sudo mv /tmp/Obsidian-$OBSIDIAN_VERSION.AppImage /usr/bin/obsidian/obsidian
-echo "[Desktop Entry]
-Name=Obsidian
-Comment=A powerful knowledge base that works on top of a local folder of plain text Markdown files
-Exec=/usr/bin/obsidian/obsidian
-Icon=/usr/bin/obsidian/obsidian-logo-gradient.svg
-Terminal=false
-Type=Application
-Version=$OBSIDIAN_VERSION
-Categories=Office;Utility;
-MimeType=x-scheme-handler/obsidian;text/html;
-" >/home/robin/.local/share/applications/obsidian.desktop
-fish_add_path /usr/bin/obsidian
-
 # install syncthing
 sudo dnf -y install syncthing
 systemctl --user enable --now syncthing.service
@@ -97,12 +76,10 @@ sudo dnf -y install eza
 # copy fish config
 cp config.fish /home/robin/.config/fish/config.fish
 
-# install flathub/flatpak
+# install flathub/flatpak and apps
 sudo dnf install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-# install spotify
 flatpak install flathub com.spotify.Client
-
-# install telegram
 flatpak install flathub org.telegram.desktop
+flatpak install flathub md.obsidian.Obsidian
+flatpak install flathub com.mattermost.Desktop
