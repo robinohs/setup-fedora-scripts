@@ -79,7 +79,11 @@ cp config.fish /home/robin/.config/fish/config.fish
 # install flathub/flatpak and apps
 sudo dnf install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub com.spotify.Client
-flatpak install flathub org.telegram.desktop
-flatpak install flathub md.obsidian.Obsidian
-flatpak install flathub com.mattermost.Desktop
+flatpak install -y flathub com.spotify.Client
+flatpak install -y flathub org.telegram.desktop
+flatpak install -y flathub md.obsidian.Obsidian
+flatpak install -y flathub com.mattermost.Desktop
+
+
+# remove non-required default apps
+sudo dnf remove -y kpat kmines kaddressbook kmail kontact neochat kmouth
