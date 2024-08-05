@@ -4,6 +4,7 @@ end
 nvm install lts
 nvm use lts
 zoxide init fish | source
+pyenv init - | source
 starship init fish | source
 clear
 

@@ -17,7 +17,7 @@ node -v
 # install rust
 sudo dnf install rustup -y
 rustup-init
-fish_add_path /home/robin/.cargo/bin
+fish_add_path ~/.cargo/bin
 cargo install cargo-binstall
 
 # install starship
@@ -73,8 +73,22 @@ sudo dnf -y install xclip
 # install eza
 sudo dnf -y install eza
 
-# copy fish config
-cp config.fish /home/robin/.config/fish/config.fish
+# install pyenv
+curl https://pyenv.run | bash
+set -Ux PYENV_ROOT $HOME/.pyenv
+fish_add_path $PYENV_ROOT/bin
+
+# install python
+pyenv install 3.12
+pyenv global 3.12
+
+# install pipx
+sudo dnf -y install pipx
+
+# install poetry
+pipx install poetry 
+fish_add_path ~/.local/bin
+poetry completions fish > ~/.config/fish/completions/poetry.fish
 
 # install flathub/flatpak and apps
 sudo dnf install -y flatpak
@@ -84,6 +98,8 @@ flatpak install -y flathub org.telegram.desktop
 flatpak install -y flathub md.obsidian.Obsidian
 flatpak install -y flathub com.mattermost.Desktop
 
-
 # remove non-required default apps
 sudo dnf remove -y kpat kmines kaddressbook kmail kontact neochat kmouth
+
+# copy fish config
+cp config.fish ~/.config/fish/config.fish
