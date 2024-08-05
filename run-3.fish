@@ -5,7 +5,7 @@ mkdir ~/repos
 mkdir ~/papers
 
 # install required tools
-sudo dnf groupinstall 'Development Tools' -y
+sudo dnf -y groupinstall 'Development Tools'
 
 # install fisher
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
@@ -15,7 +15,7 @@ nvm use lts
 node -v
 
 # install rust
-sudo dnf install rustup -y
+sudo dnf -y install rustup
 rustup-init
 fish_add_path ~/.cargo/bin
 cargo install cargo-binstall
@@ -24,27 +24,27 @@ cargo install cargo-binstall
 curl -sS https://starship.rs/install.sh | sh
 
 # install thunderbird
-sudo dnf install thunderbird -y
+sudo dnf -y install thunderbird
 
 # install VSCODE
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo >/dev/null
 sudo dnf check-update
-sudo dnf install code -y
+sudo dnf -y install code
 
 # install warp
 sudo rpm --import https://releases.warp.dev/linux/keys/warp.asc
 sudo sh -c 'echo -e "[warpdotdev]\nname=warpdotdev\nbaseurl=https://releases.warp.dev/linux/rpm/stable\nenabled=1\ngpgcheck=1\ngpgkey=https://releases.warp.dev/linux/keys/warp.asc" > /etc/yum.repos.d/warpdotdev.repo'
-sudo dnf install warp-terminal -y
+sudo dnf -y install warp-terminal
 
 # install bat
-sudo dnf install bat -y
+sudo dnf -y install bat
 
 # install du-dust
 cargo binstall du-dust
 
 # install zoxide
-sudo dnf install zoxide -y
+sudo dnf -y install zoxide
 
 # install docker
 sudo dnf -y install dnf-plugins-core
@@ -86,9 +86,9 @@ pyenv global 3.12
 sudo dnf -y install pipx
 
 # install poetry
-pipx install poetry 
+pipx install poetry
 fish_add_path ~/.local/bin
-poetry completions fish > ~/.config/fish/completions/poetry.fish
+poetry completions fish >~/.config/fish/completions/poetry.fish
 
 # install flathub/flatpak and apps
 sudo dnf install -y flatpak
