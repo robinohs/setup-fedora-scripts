@@ -97,6 +97,7 @@ flatpak install -y flathub com.spotify.Client
 flatpak install -y flathub org.telegram.desktop
 flatpak install -y flathub md.obsidian.Obsidian
 flatpak install -y flathub com.mattermost.Desktop
+flatpak install -y flathub com.discordapp.Discord
 
 # remove non-required default apps
 sudo dnf remove -y kpat kmines kaddressbook kmail kontact neochat kmouth
